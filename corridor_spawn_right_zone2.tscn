@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://g2o3fow3aq7s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_554lm"]
+size = Vector3(10, 0.2, 10)
+
+[node name="CorridorSpawnRightZone2" type="Node3D"]
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39245105, 0, 0, 0, 1.2062688, 0, 0, 0, 1, -0.12345648, -0.37458324, -0.4465084)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.27471575, 0, 0.29808092, 0, 1.206269, 0, -0.28026617, 0, 0.2921778, -0.9905663, -0.37458324, 4.483701)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.27471575, 0, 0.29808092, 0, 1.206269, 0, -0.28026617, 0, 0.2921778, -0.9905663, 4.1694098, 4.483701)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.39245105, 0, 0, 0, 1.2062688, 0, 0, 0, 1, -0.12345648, 4.1638837, -0.4309368)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1185583e-08, -1, 0, -0.48466963, -4.371139e-08, 0, 0, 0, 1, -1.9016466, 1.7581598, -0.21587372)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5332821e-08, -0.72373843, 0.12192137, -0.4846697, -4.3711392e-08, 0, -1.4619628e-08, 0.6900744, 0.12786908, -1.4180236, 1.7581598, 6.639514)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1185583e-08, -1, 0, -0.48466963, -4.371139e-08, 0, 0, 0, 0.17667858, -1.9016466, 1.7581598, 5.638331)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1185583e-08, -1, 0, -0.48466963, -4.371139e-08, 0, 0, 0, 1, 1.6009088, 1.7581598, -0.21587372)
+mesh = SubResource("BoxMesh_554lm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.4666085, 3.0086968e-09)
+light_energy = 3.175

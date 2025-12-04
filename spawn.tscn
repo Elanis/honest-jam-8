@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxuy2gjll14vt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s6ds7"]
+size = Vector3(10, 0.2, 10)
+
+[node name="Spawn" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.2062688, 0, 0, 0, 1, 0, -0.37458324, 0)
+mesh = SubResource("BoxMesh_s6ds7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.2062688, 0, 0, 0, 1, 0, 4.1800785, 0)
+mesh = SubResource("BoxMesh_s6ds7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1185583e-08, -1, 0, -0.48466963, -4.371139e-08, 0, 0, 0, 1, -4.8342834, 1.7581598, -0.08329928)
+mesh = SubResource("BoxMesh_s6ds7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1185583e-08, -1, 0, -0.48466963, -4.371139e-08, 0, 0, 0, 1, 4.954456, 1.7581604, -0.08329928)
+mesh = SubResource("BoxMesh_s6ds7")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.260513e-16, 4.371139e-08, -1, -0.48466963, -4.371139e-08, 0, 2.1185583e-08, -1, -4.371139e-08, -0.08872485, 1.7581604, 4.9056163)
+mesh = SubResource("BoxMesh_s6ds7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.260513e-16, 4.371139e-08, -0.27129582, -0.48466963, -4.371139e-08, 0, 2.1185583e-08, -1, -1.1858717e-08, 0.05066482, 1.7581599, -4.892055)
+mesh = SubResource("BoxMesh_s6ds7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.7364802, -1.1654671e-08)
+light_energy = 7.5
