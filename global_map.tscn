@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyloo1i4abkgg"]
+[gd_scene load_steps=10 format=3 uid="uid://dyloo1i4abkgg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuy2gjll14vt" path="res://spawn.tscn" id="1_kk3pl"]
 [ext_resource type="PackedScene" uid="uid://lrc2vshi8bh2" path="res://corridor_spawn_left_zone1.tscn" id="2_rpnv7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvwhfpubxccqp" path="res://zone2.tscn" id="5_pffc4"]
 [ext_resource type="PackedScene" uid="uid://cwdp8i38y51th" path="res://vents_zone2_zone1.tscn" id="6_rcglp"]
 [ext_resource type="PackedScene" uid="uid://n6efgo0hdk5" path="res://evacpod.tscn" id="8_pskhb"]
+[ext_resource type="PackedScene" uid="uid://tm44f1ckhabh" path="res://player.tscn" id="9_irmfa"]
 
 [node name="GlobalMap" type="Node3D"]
 
@@ -33,3 +34,6 @@ transform = Transform3D(-3.185957e-08, 0, 0.51721233, 0, 0.5692382, 0, -0.728862
 
 [node name="EvacPod" parent="." instance=ExtResource("8_pskhb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.9461114, 0, -48.09713)
+
+[node name="Player" parent="." instance=ExtResource("9_irmfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60124314, 2.181889)

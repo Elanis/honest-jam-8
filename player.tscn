@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://tm44f1ckhabh"]
+
+[ext_resource type="Script" uid="uid://c0pvrakij0vc8" path="res://Player.cs" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+height = 3.5
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.704011, 0)
+fov = 60.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4548837, 0)
+shape = SubResource("CapsuleShape3D_4flbx")
