@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Debug": {
+      "commandName": "Executable",
+      "executablePath": "%GODOT4%",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}
