@@ -7,18 +7,30 @@ public partial class Player : CharacterBody3D {
     [Export] public float JumpVelocity = 4.5f;
     [Export] public float MouseSensitivity = 0.05f;   // tweak to taste
     [Export] public float MaxPitchDegrees = 40f;    // prevent looking straight up/down
+    [Export] public float CrouchingCameraHeightChange = 1f;
 
-    // Nodes
     private Node3D _cameraPivot;
     private Camera3D _camera;
+    private CollisionShape3D _collisionShape3D;
+    private bool isCrouching = false;
+    private CapsuleShape3D _capsuleShape;
 
-    // Internal state
+    private float _standingHeight;
+    private float _crouchHeight;
     private Vector2 _rotationDeg; // x = yaw, y = pitch (both in degrees)
 
     public override void _Ready() {
         // Grab references
         _cameraPivot = GetNode<Node3D>("CameraPivot");
         _camera = _cameraPivot.GetNode<Camera3D>("Camera3D");
+        _collisionShape3D = GetNode<CollisionShape3D>("CollisionShape3D");
+        var shape = _collisionShape3D.Shape as CapsuleShape3D;
+        if (shape == null)
+            GD.PrintErr("Expected a CapsuleShape3D on the CollisionShape3D!");
+
+        _capsuleShape = shape;
+        _standingHeight = shape.Height;
+        _crouchHeight = _standingHeight * 0.5f;
 
         // Hide and capture the mouse cursor
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -54,6 +66,23 @@ public partial class Player : CharacterBody3D {
         // Handle Jump.
         if (Input.IsActionJustPressed("jump") && IsOnFloor()) {
             velocity.Y = JumpVelocity;
+        }
+
+        // Crouch
+        if (Input.IsActionPressed("crouch") && IsOnFloor()) {
+            if (!isCrouching) {
+                isCrouching = true;
+                _capsuleShape.Height = _crouchHeight;
+                _collisionShape3D.Position = new Vector3(0, _crouchHeight / 2f, 0);
+                _cameraPivot.Position = new Vector3(_cameraPivot.Position.X, _cameraPivot.Position.Y - CrouchingCameraHeightChange, _cameraPivot.Position.Z);
+            }
+        } else {
+            if (isCrouching) {
+                isCrouching = false;
+                _capsuleShape.Height = _standingHeight;
+                _collisionShape3D.Position = new Vector3(0, _standingHeight / 2f, 0);
+                _cameraPivot.Position = new Vector3(_cameraPivot.Position.X, _cameraPivot.Position.Y + CrouchingCameraHeightChange, _cameraPivot.Position.Z);
+            }
         }
 
         // Get the input direction and handle the movement/deceleration.
