@@ -11,14 +11,10 @@ config_version=5
 [application]
 
 config/name="Honest Jam 8"
+run/main_scene="uid://dyloo1i4abkgg"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Honest Jam 8"
-
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
