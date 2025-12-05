@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://g2o3fow3aq7s"]
 
-[ext_resource type="Script" uid="uid://dgfkoa85g3u5o" path="res://Corridor_SP_Z2_Area3d.cs" id="1_4hy8d"]
+[ext_resource type="Script" uid="uid://dgfkoa85g3u5o" path="res://Rooms/SP_Z2/Corridor_SP_Z2_Area3d.cs" id="1_4hy8d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_554lm"]
 size = Vector3(10, 0.2, 10)
