@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cj3f32o3i3dmx"]
+[gd_scene load_steps=14 format=3 uid="uid://cj3f32o3i3dmx"]
+
+[ext_resource type="Script" uid="uid://j5qhe0u72pep" path="res://Rooms/Zone1/Zone1Area3D.cs" id="1_co3rt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s6ds7"]
 size = Vector3(10, 0.2, 10)
@@ -32,6 +34,9 @@ points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.179365
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4bc0x"]
 points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.17936507, -5.077377, -5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, -5.077377, -5.077377, -0.17936507, 5.077377, -5.077377, 0.13809523, 5.077377, 5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, 5.077377)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g22io"]
+size = Vector3(9.5, 4, 9)
 
 [node name="Zone1" type="Node3D"]
 
@@ -122,3 +127,13 @@ mesh = SubResource("BoxMesh_h7ehl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D10/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_4bc0x")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17147946, 1.83586, 0.039177418)
+script = ExtResource("1_co3rt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21053529, 0, 0)
+shape = SubResource("BoxShape3D_g22io")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_OnAreaEntered"]

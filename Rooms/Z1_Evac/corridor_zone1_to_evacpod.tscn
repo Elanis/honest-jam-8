@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://chbwgkq5aw50f"]
+[gd_scene load_steps=8 format=3 uid="uid://chbwgkq5aw50f"]
+
+[ext_resource type="Script" uid="uid://cx30m1byxcu2x" path="res://Rooms/Z1_Evac/Corridor_Z1_EP_Area3d.cs" id="1_12c7t"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_554lm"]
 size = Vector3(10, 0.2, 10)
@@ -14,6 +16,9 @@ points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.179365
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_le1u1"]
 points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.17936507, -5.077377, -5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, -5.077377, -5.077377, -0.17936507, 5.077377, -5.077377, 0.13809523, 5.077377, 5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, 5.077377)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ende6"]
+size = Vector3(3.2, 4, 2)
 
 [node name="CorridorZone1ToEvacPod" type="Node3D"]
 
@@ -56,3 +61,12 @@ shape = SubResource("ConvexPolygonShape3D_le1u1")
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.4666085, 3.0086968e-09)
 light_energy = 3.175
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17147946, 1.83586, 1.5675864)
+script = ExtResource("1_12c7t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ende6")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_OnAreaEntered"]

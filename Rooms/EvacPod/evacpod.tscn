@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://n6efgo0hdk5"]
+[gd_scene load_steps=14 format=3 uid="uid://n6efgo0hdk5"]
+
+[ext_resource type="Script" uid="uid://6je2chrundr3" path="res://Rooms/EvacPod/EvacPodArea3d.cs" id="1_iummc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s6ds7"]
 size = Vector3(10, 0.2, 10)
@@ -32,6 +34,9 @@ points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.179365
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l0avh"]
 points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.17936507, -5.077377, -5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, -5.077377, -5.077377, -0.17936507, 5.077377, -5.077377, 0.13809523, 5.077377, 5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, 5.077377)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnpec"]
+size = Vector3(5, 4, 8)
 
 [node name="EvacPod" type="Node3D"]
 
@@ -134,3 +139,13 @@ light_energy = 7.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6939907, 1.814189, 0.4549089)
 radius = 1.6
 height = 5.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4566842, 1.83586, 0.26045978)
+script = ExtResource("1_iummc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83755195, 0, -0.12281704)
+shape = SubResource("BoxShape3D_rnpec")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_OnAreaEntered"]

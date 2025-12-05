@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvwhfpubxccqp"]
+[gd_scene load_steps=12 format=3 uid="uid://dvwhfpubxccqp"]
+
+[ext_resource type="Script" uid="uid://b625a8unbtgmp" path="res://Rooms/Zone2/Zone2Area3D.cs" id="1_t5fgs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s6ds7"]
 size = Vector3(10, 0.2, 10)
@@ -26,6 +28,9 @@ points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.179365
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bwrdm"]
 points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.17936507, -5.077377, -5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, -5.077377, -5.077377, -0.17936507, 5.077377, -5.077377, 0.13809523, 5.077377, 5.077377, 0.13809523, -5.077377, 5.077377, -0.17936507, 5.077377)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qgwv"]
+size = Vector3(9.5, 4, 9)
 
 [node name="Zone2" type="Node3D"]
 
@@ -107,3 +112,13 @@ light_energy = 7.5
 spot_range = 8.5
 spot_angle = 90.0
 spot_angle_attenuation = 0.68
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17147946, 1.83586, 0.039177418)
+script = ExtResource("1_t5fgs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21053529, 0, 0)
+shape = SubResource("BoxShape3D_3qgwv")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_OnAreaEntered"]
