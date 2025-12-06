@@ -18,7 +18,7 @@ namespace HonestJam8.Narration {
 
             // Preload audio
             foreach (var value in Enum.GetValues(typeof(NarrationItems))) {
-                AudioStreamWav.LoadFromFile(AudioPathBase + value.ToString() + ".wav");
+                ResourceLoader.Load(AudioPathBase + value.ToString() + ".wav");
             }
 
             _audioStreamPlayer.Finished += () => {
@@ -38,7 +38,7 @@ namespace HonestJam8.Narration {
             var currentItem = NextNarrationItems.First();
             NextNarrationItems.Remove(currentItem);
 
-            var sound = AudioStreamWav.LoadFromFile(AudioPathBase + currentItem.ToString() + ".wav");
+            var sound = (AudioStreamWav)ResourceLoader.Load(AudioPathBase + currentItem.ToString() + ".wav");
 
             _audioStreamPlayer.Stream = sound;
             _audioStreamPlayer.Play(0);
