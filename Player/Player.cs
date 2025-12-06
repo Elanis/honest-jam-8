@@ -1,7 +1,5 @@
 using Godot;
 
-using System;
-
 public partial class Player : CharacterBody3D {
     [Export] public float Speed = 5.0f;
     [Export] public float JumpVelocity = 4.5f;
@@ -56,6 +54,11 @@ public partial class Player : CharacterBody3D {
     }
 
     public override void _PhysicsProcess(double delta) {
+        if (Input.IsActionJustPressed("escape")) {
+            GetTree().Quit();
+            return;
+        }
+
         Vector3 velocity = Velocity;
 
         // Add the gravity.
