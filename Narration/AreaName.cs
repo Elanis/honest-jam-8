@@ -5,7 +5,8 @@ namespace HonestJam8.Narration {
         Corridor_SP_Z2 = 2,
         Zone1 = 3,
         Zone2 = 4,
-        Corridor_Z1_EP = 5,
-        EscapePod = 6,
+        Vent = 5,
+        Corridor_Z1_EP = 6,
+        EscapePod = 7,
     }
 }
