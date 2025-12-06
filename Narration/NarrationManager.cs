@@ -15,7 +15,6 @@ namespace HonestJam8.Narration {
             _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 
             _audioStreamPlayer.Finished += () => {
-                _label.Text = "";
                 PlayNextNarrationInQueue();
             };
         }
