@@ -1,5 +1,6 @@
 using Godot;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,9 +11,15 @@ namespace HonestJam8.Narration {
         private readonly List<NarrationItems> NextNarrationItems = [];
         private Label _label;
         private AudioStreamPlayer _audioStreamPlayer;
+        private const string AudioPathBase = "res://Audio/Narration/";
         public override void _Ready() {
             _label = GetNode<Label>("Label");
             _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+
+            // Preload audio
+            foreach (var value in Enum.GetValues(typeof(NarrationItems))) {
+                AudioStreamWav.LoadFromFile(AudioPathBase + value.ToString() + ".wav");
+            }
 
             _audioStreamPlayer.Finished += () => {
                 PlayNextNarrationInQueue();
@@ -31,7 +38,10 @@ namespace HonestJam8.Narration {
             var currentItem = NextNarrationItems.First();
             NextNarrationItems.Remove(currentItem);
 
-            // TODO: run audio
+            var sound = AudioStreamWav.LoadFromFile(AudioPathBase + currentItem.ToString() + ".wav");
+
+            _audioStreamPlayer.Stream = sound;
+            _audioStreamPlayer.Play(0);
 
             _label.Text = narrationTexts[currentItem];
 
