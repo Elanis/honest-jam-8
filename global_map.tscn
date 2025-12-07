@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyloo1i4abkgg"]
+[gd_scene load_steps=15 format=3 uid="uid://dyloo1i4abkgg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuy2gjll14vt" path="res://Rooms/Spawn/spawn.tscn" id="1_kk3pl"]
 [ext_resource type="PackedScene" uid="uid://lrc2vshi8bh2" path="res://Rooms/SP_Z1/corridor_spawn_left_zone1.tscn" id="2_rpnv7"]
@@ -10,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://n6efgo0hdk5" path="res://Rooms/EvacPod/evacpod.tscn" id="8_pskhb"]
 [ext_resource type="PackedScene" uid="uid://tm44f1ckhabh" path="res://Player/player.tscn" id="9_irmfa"]
 [ext_resource type="Script" uid="uid://bb778jq1wuewc" path="res://Narration/NarrationManager.cs" id="10_lnloq"]
+
+[sub_resource type="Theme" id="Theme_lnloq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnloq"]
+bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lnloq"]
 
@@ -45,6 +50,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60124314, 2.181889)
 
 [node name="NarrationManager" type="Node" parent="."]
 script = ExtResource("10_lnloq")
+
+[node name="Panel" type="Panel" parent="NarrationManager"]
+visible = false
+offset_right = 1153.0
+offset_bottom = 648.0
+theme = SubResource("Theme_lnloq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnloq")
 
 [node name="Label" type="Label" parent="NarrationManager"]
 offset_left = 15.0

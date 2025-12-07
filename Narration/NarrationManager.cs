@@ -11,12 +11,14 @@ namespace HonestJam8.Narration {
         private readonly List<NarrationItems> PreviousNarrationItems = [];
         private readonly List<NarrationItems> NextNarrationItems = [];
         private Label _label;
+        private Panel _panel;
         private AudioStreamPlayer _audioStreamPlayer;
         private const string AudioPathBase = "res://Audio/Narration/";
         private int RedButtonCount = 0;
         private System.Timers.Timer DeathTimer = new System.Timers.Timer(TimeSpan.FromSeconds(20));
         public override void _Ready() {
             _label = GetNode<Label>("Label");
+            _panel = GetNode<Panel>("Panel");
             _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 
             // Preload audio
@@ -33,11 +35,11 @@ namespace HonestJam8.Narration {
         }
 
         private void Death(object sender, ElapsedEventArgs args) {
-            throw new NotImplementedException();
+            _panel.Visible = true;
         }
 
         private void WinGame() {
-            throw new NotImplementedException();
+            _panel.Visible = true;
         }
 
         private void PlayNextNarrationInQueue() {
@@ -146,6 +148,12 @@ namespace HonestJam8.Narration {
             { NarrationItems.Zone1_RedButton_Odd, """
                 Are you suicidal or just a dumb human?
                 """ },
+            { NarrationItems.Zone1_RedButton_Death, """
+                Radiation exposure critical. BEEP. You have died.
+                ***
+                Thanks for playing the game! Press ESC to quit.
+                Feel free to restart to test alternative narrative lines!
+                """ },
             { NarrationItems.Zone1_EvacPod, """
                 Hurry up, the ship is not safe.
                 """ },
@@ -154,6 +162,9 @@ namespace HonestJam8.Narration {
                 """ },
             { NarrationItems.Launch, """
                 Congratulations, you survived. We saved you together.
+                ***
+                Thanks for playing the game! Press ESC to quit.
+                Feel free to restart to test alternative narrative lines!
                 """ },
         };
 
