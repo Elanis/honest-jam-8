@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lrc2vshi8bh2"]
+[gd_scene load_steps=10 format=3 uid="uid://lrc2vshi8bh2"]
 
 [ext_resource type="Script" uid="uid://biv88qhga4hge" path="res://Rooms/SP_Z1/Corridor_SP_Z1_Area3d.cs" id="1_pll6c"]
 
@@ -19,6 +19,12 @@ points = PackedVector3Array(5.077377, 0.13809523, 5.077377, -5.077377, -0.179365
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_554lm"]
 size = Vector3(3.2, 4, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbh2p"]
+size = Vector3(4, 4.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cbh2p"]
+points = PackedVector3Array(1.8325015, 2.0575457, 0.049999997, -2.0357144, -2.2857144, -0.08570029, -1.8325015, -2.0575457, 0.049999997, -2.0357144, 2.2857144, -0.08570029, 2.0357144, -2.2857144, -0.08570029, 2.0357144, 2.2857144, -0.08570029, -1.8325015, 2.0575457, 0.049999997, 1.8325015, -2.0575457, 0.049999997)
 
 [node name="CorridorSpawnLeftZone1" type="Node3D"]
 
@@ -68,5 +74,14 @@ script = ExtResource("1_pll6c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_554lm")
+
+[node name="SPZ1Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.832, 9.023)
+mesh = SubResource("BoxMesh_cbh2p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SPZ1Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SPZ1Door/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_cbh2p")
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_OnAreaEntered"]

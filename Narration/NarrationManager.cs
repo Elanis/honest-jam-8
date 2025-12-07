@@ -26,10 +26,6 @@ namespace HonestJam8.Narration {
             };
         }
 
-        [Signal]
-        public delegate void SpawnCondemnedEventHandler();
-
-
         private void PlayNextNarrationInQueue() {
             if (NextNarrationItems.Count == 0 || _audioStreamPlayer.Playing) {
                 return;
@@ -68,9 +64,11 @@ namespace HonestJam8.Narration {
                     break;
                 case AreaName.Corridor_SP_Z1:
                     AddNarrationItemIfNotAlreadyDone(NarrationItems.Spawn_Zone1, [NarrationItems.Spawn_Zone1, NarrationItems.Spawn_Zone2]);
+                    CloseSpawnDoors();
                     break;
                 case AreaName.Corridor_SP_Z2:
                     AddNarrationItemIfNotAlreadyDone(NarrationItems.Spawn_Zone2, [NarrationItems.Spawn_Zone2, NarrationItems.Spawn_Zone1]);
+                    CloseSpawnDoors();
                     break;
                 case AreaName.Zone1:
                     AddNarrationItemIfNotAlreadyDone(NarrationItems.Zone1, [NarrationItems.Zone1]);
@@ -129,5 +127,12 @@ namespace HonestJam8.Narration {
                 You have reached the evacuation pod. Please enter to launch
                 """ },
         };
+
+        private void CloseSpawnDoors() {
+            var spz1door = GetNode<MeshInstance3D>("../CorridorSpawnLeftZone1/SPZ1Door");
+            spz1door.Position = new Vector3(0, spz1door.Position.Y, spz1door.Position.Z);
+            var spz2door = GetNode<MeshInstance3D>("../CorridorSpawnRightZone2/SPZ2Door");
+            spz2door.Position = new Vector3(0.25f, spz2door.Position.Y, 5.3f);
+        }
     }
 }
