@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyloo1i4abkgg"]
+[gd_scene load_steps=13 format=3 uid="uid://dyloo1i4abkgg"]
 
 [ext_resource type="PackedScene" uid="uid://cxuy2gjll14vt" path="res://Rooms/Spawn/spawn.tscn" id="1_kk3pl"]
 [ext_resource type="PackedScene" uid="uid://lrc2vshi8bh2" path="res://Rooms/SP_Z1/corridor_spawn_left_zone1.tscn" id="2_rpnv7"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://n6efgo0hdk5" path="res://Rooms/EvacPod/evacpod.tscn" id="8_pskhb"]
 [ext_resource type="PackedScene" uid="uid://tm44f1ckhabh" path="res://Player/player.tscn" id="9_irmfa"]
 [ext_resource type="Script" uid="uid://bb778jq1wuewc" path="res://Narration/NarrationManager.cs" id="10_lnloq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lnloq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e3up2"]
 
 [node name="GlobalMap" type="Node3D"]
 
@@ -57,3 +61,8 @@ vertical_alignment = 2
 autowrap_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NarrationManager"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(575, 325)
+mesh = SubResource("CapsuleMesh_lnloq")
+texture = SubResource("CanvasTexture_e3up2")

@@ -3,6 +3,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Timers;
 
 namespace HonestJam8.Narration {
 
@@ -12,6 +13,8 @@ namespace HonestJam8.Narration {
         private Label _label;
         private AudioStreamPlayer _audioStreamPlayer;
         private const string AudioPathBase = "res://Audio/Narration/";
+        private int RedButtonCount = 0;
+        private System.Timers.Timer DeathTimer = new System.Timers.Timer(TimeSpan.FromSeconds(20));
         public override void _Ready() {
             _label = GetNode<Label>("Label");
             _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
@@ -24,6 +27,17 @@ namespace HonestJam8.Narration {
             _audioStreamPlayer.Finished += () => {
                 PlayNextNarrationInQueue();
             };
+
+            DeathTimer.AutoReset = false;
+            DeathTimer.Elapsed += Death;
+        }
+
+        private void Death(object sender, ElapsedEventArgs args) {
+            throw new NotImplementedException();
+        }
+
+        private void WinGame() {
+            throw new NotImplementedException();
         }
 
         private void PlayNextNarrationInQueue() {
@@ -120,11 +134,26 @@ namespace HonestJam8.Narration {
             { NarrationItems.Zone1_Zone2, """
                 What ... What are you doing ? It's the wrong way!
                 """ },
+            { NarrationItems.Zone1_BlueButton, """
+                Communication array restarted. Emitting distress signal, please reach the evacuation pods through the next corridor
+                """ },
+            { NarrationItems.Zone1_RedButton_One, """
+                Engine radiation sheilds disabled... Imminent death detected. Please restart the shields immediately to ensure survival
+                """ },
+            { NarrationItems.Zone1_RedButton_Even, """
+                Shield raised
+                """ },
+            { NarrationItems.Zone1_RedButton_Odd, """
+                Are you suicidal or just a dumb human?
+                """ },
             { NarrationItems.Zone1_EvacPod, """
                 Hurry up, the ship is not safe.
                 """ },
             { NarrationItems.EvacPod, """
                 You have reached the evacuation pod. Please enter to launch
+                """ },
+            { NarrationItems.Launch, """
+                Congratulations, you survived. We saved you together.
                 """ },
         };
 
@@ -133,6 +162,33 @@ namespace HonestJam8.Narration {
             spz1door.Position = new Vector3(0, spz1door.Position.Y, spz1door.Position.Z);
             var spz2door = GetNode<MeshInstance3D>("../CorridorSpawnRightZone2/SPZ2Door");
             spz2door.Position = new Vector3(0.25f, spz2door.Position.Y, 5.3f);
+        }
+
+        public void OnButtonTriggered(ButtonName buttonName) {
+            switch (buttonName) {
+                case ButtonName.RedButton:
+                    if (RedButtonCount == 0) {
+                        NextNarrationItems.Add(NarrationItems.Zone1_RedButton_One);
+                        DeathTimer.Start();
+                    } else if (RedButtonCount % 2 == 1) {
+                        NextNarrationItems.Add(NarrationItems.Zone1_RedButton_Even);
+                        DeathTimer.Stop();
+                    } else {
+                        NextNarrationItems.Add(NarrationItems.Zone1_RedButton_Odd);
+                        DeathTimer.Start();
+                    }
+                    RedButtonCount++;
+                    break;
+                case ButtonName.BlueButton:
+                    AddNarrationItemIfNotAlreadyDone(NarrationItems.Zone1_BlueButton, [NarrationItems.Zone1_BlueButton]);
+                    break;
+                case ButtonName.EvacPod:
+                    AddNarrationItemIfNotAlreadyDone(NarrationItems.Launch, [NarrationItems.Launch]);
+                    WinGame();
+                    break;
+            }
+
+            PlayNextNarrationInQueue();
         }
     }
 }

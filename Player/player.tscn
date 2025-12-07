@@ -14,8 +14,12 @@ script = ExtResource("1_4flbx")
 [node name="CameraPivot" type="Marker3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.704011, 0.24330324)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7139149, 0.34238416)
 fov = 60.0
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, -1.285411e-07, -0.99999994, 0, 2.9406776, -4.3711385e-08, 0, 2.7111323, 0)
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4548837, 0)

@@ -1,5 +1,7 @@
 using Godot;
 
+using System;
+
 public partial class Player : CharacterBody3D {
     [Export] public float Speed = 5.0f;
     [Export] public float JumpVelocity = 4.5f;
@@ -57,6 +59,20 @@ public partial class Player : CharacterBody3D {
         if (Input.IsActionJustPressed("escape")) {
             GetTree().Quit();
             return;
+        }
+
+        // Handle action.
+        if (Input.IsActionJustPressed("action")) {
+            var raycast3D = GetNode<RayCast3D>("CameraPivot/RayCast3D");
+            if (raycast3D.IsColliding()) {
+                try {
+                    var collider = raycast3D.GetCollider() as StaticBody3D;
+                    var parent = collider.GetParent<GeometryInstance3D>();
+                    if (parent.HasUserSignal("PlayerTrigger")) {
+                        parent.EmitSignal("PlayerTrigger");
+                    }
+                } catch (Exception e) { GD.PrintErr(e.Message); }
+            }
         }
 
         Vector3 velocity = Velocity;
