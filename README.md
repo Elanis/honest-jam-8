@@ -4,5 +4,7 @@ You can try it on itch.io at https://elanis.itch.io/crash-in-space
 
 # Credits
 
-Project by Elanis
-Ambient music - Atmosphere_-_Starship_Bridge.ogg - from Sci-Fi SFX Pack by [Joel Steudler](https://www.joelsteudlermusic.com)
+Project by Elanis  
+Ambient music - Atmosphere_-_Starship_Bridge.ogg - from Sci-Fi SFX Pack by [Joel Steudler](https://www.joelsteudlermusic.com)  
+Explosion sound by V-ktor https://freesound.org/people/V-ktor/sounds/434423/  
+Death beep sound by ryusa https://freesound.org/people/ryusa/sounds/531134/
