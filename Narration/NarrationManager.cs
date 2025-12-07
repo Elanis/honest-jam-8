@@ -181,6 +181,7 @@ namespace HonestJam8.Narration {
                     break;
                 case ButtonName.BlueButton:
                     AddNarrationItemIfNotAlreadyDone(NarrationItems.Zone1_BlueButton, [NarrationItems.Zone1_BlueButton]);
+                    OpenEvacPodCorridorDoor();
                     break;
                 case ButtonName.EvacPod:
                     AddNarrationItemIfNotAlreadyDone(NarrationItems.Launch, [NarrationItems.Launch]);
@@ -189,6 +190,11 @@ namespace HonestJam8.Narration {
             }
 
             PlayNextNarrationInQueue();
+        }
+
+        private void OpenEvacPodCorridorDoor() {
+            var spz1door = GetNode<MeshInstance3D>("../CorridorZone1ToEvacPod/Z1EPDoor");
+            spz1door.Position = new Vector3(25, spz1door.Position.Y, spz1door.Position.Z);
         }
     }
 }
