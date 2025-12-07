@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxuy2gjll14vt"]
+[gd_scene load_steps=13 format=3 uid="uid://cxuy2gjll14vt"]
 
 [ext_resource type="Script" uid="uid://b7l3duknagk8h" path="res://Rooms/Spawn/SpawnArea3d.cs" id="1_76nef"]
+[ext_resource type="PackedScene" uid="uid://v28exqoyac6c" path="res://Furnitures/table.tscn" id="2_itiy6"]
+[ext_resource type="PackedScene" uid="uid://drdxmw8bppvdc" path="res://Furnitures/chair.tscn" id="3_3rpr7"]
+[ext_resource type="PackedScene" uid="uid://clnydtcg2053e" path="res://Furnitures/shelf.tscn" id="4_84of8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s6ds7"]
 size = Vector3(10, 0.2, 10)
@@ -96,5 +99,38 @@ script = ExtResource("1_76nef")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21053529, 0, 0)
 shape = SubResource("BoxShape3D_itiy6")
+
+[node name="Table" parent="." instance=ExtResource("2_itiy6")]
+transform = Transform3D(0.8595581, 0, -0.51103806, 0, 1, 0, 0.51103806, 0, 0.8595581, 2.6357384, 0.24928612, 2.2516963)
+
+[node name="Table2" parent="." instance=ExtResource("2_itiy6")]
+transform = Transform3D(0.95671207, 0, 0.2910362, 0, 1, 0, -0.2910362, 0, 0.95671207, -2.6589057, 0.24928583, 2.7465043)
+
+[node name="Chair" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(-0.8526857, 0, 0.5224242, 0, 1, 0, -0.5224242, 0, -0.8526857, 3.94056, 0.06014146, 2.360912)
+
+[node name="Chair5" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(-0.8526857, 0.5224242, 0, 0, -4.371139e-08, -1, -0.5224242, -0.8526857, 1.4901161e-08, 2.8409774, 0.3687852, 0.060656667)
+
+[node name="Chair8" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(-0.7444928, 0.66692245, 0.03073746, 0.056355856, 0.016902138, 0.99826765, 0.66524756, 0.7449353, -0.050168548, -1.2212845, 0.2609595, -3.9848704)
+
+[node name="Chair6" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(-0.16945261, 0.9855383, 0, -6.9009376e-09, -3.353042e-08, -1, -0.9855383, -0.16945261, 1.4901161e-08, 0.10392985, 0.36878526, 3.5606139)
+
+[node name="Chair7" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(-0.7372656, 0.6756032, 1.3317913e-07, 8.195639e-08, -1.4901161e-08, 1, 0.67560303, 0.73726577, -1.4901161e-08, -2.0868988, 0.36878532, 2.755772)
+
+[node name="Chair3" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(0.96397936, 0, 0.26597673, 0, 1, 0, -0.26597673, 0, 0.96397936, -3.3588078, -0.11617695, 2.3975582)
+
+[node name="Chair4" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(0.96397936, 0, 0.26597673, 0, 1, 0, -0.26597673, 0, 0.96397936, -3.3879774, -0.11617695, 3.5152264)
+
+[node name="Chair2" parent="." instance=ExtResource("3_3rpr7")]
+transform = Transform3D(-0.74076545, 0.42230245, 0.5224242, 0.49526155, 0.8687439, 0, -0.45385286, 0.25873664, -0.8526857, 3.368051, 0.06014146, 3.2953446)
+
+[node name="Shelf" parent="." instance=ExtResource("4_84of8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.421401, -0.20800339, -0.05496072)
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_OnAreaEntered"]
