@@ -3,7 +3,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Timers;
 
 namespace HonestJam8.Narration {
 
@@ -15,7 +14,7 @@ namespace HonestJam8.Narration {
         private AudioStreamPlayer _audioStreamPlayer;
         private const string AudioPathBase = "res://Audio/Narration/";
         private int RedButtonCount = 0;
-        private System.Timers.Timer DeathTimer = new System.Timers.Timer(TimeSpan.FromSeconds(20));
+        private Timer DeathTimer;
         public override void _Ready() {
             _label = GetNode<Label>("Label");
             _panel = GetNode<Panel>("Panel");
@@ -30,11 +29,12 @@ namespace HonestJam8.Narration {
                 PlayNextNarrationInQueue();
             };
 
-            DeathTimer.AutoReset = false;
-            DeathTimer.Elapsed += Death;
+            DeathTimer = GetNode<Timer>("Timer");
+            DeathTimer.Timeout += Death;
         }
 
-        private void Death(object sender, ElapsedEventArgs args) {
+        private void Death() {
+            AddNarrationItemIfNotAlreadyDone(NarrationItems.Zone1_RedButton_Death, [NarrationItems.Zone1_RedButton_Death]);
             _panel.Visible = true;
         }
 

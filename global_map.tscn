@@ -74,6 +74,9 @@ autowrap_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NarrationManager"]
 
+[node name="Timer" type="Timer" parent="NarrationManager"]
+wait_time = 15.0
+
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(575, 325)
 mesh = SubResource("CapsuleMesh_lnloq")
